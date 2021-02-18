@@ -1,11 +1,13 @@
 package com.neelima.bookstore.service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neelima.bookstore.dto.UserDto;
 import com.neelima.bookstore.model.User;
 import com.neelima.bookstore.repository.UserRepository;
 
@@ -15,8 +17,14 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public List<User> findAll() {
-		return (List<User>) userRepository.findAll();
+	public List<UserDto> findAll() {
+		List<User> users = userRepository.findAll();
+
+		List<UserDto> userDtos = new LinkedList<UserDto>();
+		for (User user : users) {
+			userDtos.add(new UserDto(user));
+		}
+		return userDtos;
 	}
 
 	public Optional<User> findById(Long id) {
