@@ -22,6 +22,23 @@ public class BookInventory {
 
 	private long quantity;
 
+	public BookInventory() {
+		super();
+	}
+	public BookInventory(long id, Book book, long quantity) {
+		super();
+		this.id = id;
+		this.book = book;
+		this.quantity = quantity;
+	}
+
+	public BookInventory(Book book, long quantity) {
+		super();
+		this.book=book;
+		this.quantity = quantity;
+	}
+	
+
 	public long getId() {
 		return id;
 	}

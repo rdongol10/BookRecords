@@ -34,6 +34,29 @@ public class BookLog {
 
 	private Date date;
 
+	public BookLog() {
+		super();
+	}
+
+	public BookLog(long id, Book book, User user, String type, long quantity, Date date) {
+		super();
+		this.id = id;
+		this.book = book;
+		this.user = user;
+		this.type = type;
+		this.quantity = quantity;
+		this.date = date;
+	}
+
+	public BookLog(Book book, User user, String type, long quantity, Date date) {
+		super();
+		this.book = book;
+		this.user = user;
+		this.type = type;
+		this.quantity = quantity;
+		this.date = date;
+	}
+
 	public long getId() {
 		return id;
 	}
