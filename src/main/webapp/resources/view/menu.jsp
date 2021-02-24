@@ -60,9 +60,9 @@
                             <li class="nav-divider">
                                 Menu
                             </li>
-                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">Users </a>
-                                <div id="submenu-1" class="collapse submenu" style="">
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#userMenu" aria-controls="userMenu">Users </a>
+                                <div id="userMenu" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/listUsers.jsp">List Users</a>
@@ -73,6 +73,21 @@
                                     </ul>
                                 </div>
                             </li>
+                            
+                             <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#booksMenu" aria-controls="booksMenu">Books </a>
+                                <div id="booksMenu" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="${contextPath}/resources/view/listBooks.jsp">List Books</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="${contextPath}/resources/view/addBook.jsp">Add Book</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
                         </ul>
                     </div>
                 </nav>
