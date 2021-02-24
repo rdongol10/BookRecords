@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.neelima.bookstore.dto.BookDto;
+
 @Entity
 public class Book {
 	@Id
@@ -26,6 +28,30 @@ public class Book {
 	private String author;
 	private double price;
 
+	public Book() {
+		super();
+	}
+
+	public Book(long id, List<BookInventory> bookInventory, List<BookLog> bookLog, String name, String publisher,
+			String author, double price) {
+		super();
+		this.id = id;
+		this.bookInventory = bookInventory;
+		this.bookLog = bookLog;
+		this.name = name;
+		this.publisher = publisher;
+		this.author = author;
+		this.price = price;
+	}
+
+	public Book(BookDto bookDto) {
+		this.id = bookDto.getId();
+		this.name = bookDto.getName();
+		this.publisher = bookDto.getPublisher();
+		this.author = bookDto.getAuthor();
+		this.price = bookDto.getPrice();
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -40,6 +66,14 @@ public class Book {
 
 	public void setBookInventory(List<BookInventory> bookInventory) {
 		this.bookInventory = bookInventory;
+	}
+
+	public List<BookLog> getBookLog() {
+		return bookLog;
+	}
+
+	public void setBookLog(List<BookLog> bookLog) {
+		this.bookLog = bookLog;
 	}
 
 	public String getName() {
