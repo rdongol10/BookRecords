@@ -33,7 +33,7 @@
         <div class="card ">
         
             <div class="card-header text-center">
-            	<span class="navbar-brand">Renting</span>
+            	<span class="navbar-brand">Book Store</span>
 				<span class="splash-description">Please enter your user information.</span>
 			</div>
 			
