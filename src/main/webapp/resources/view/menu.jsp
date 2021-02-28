@@ -84,6 +84,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/addBook.jsp">Add Book</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="${contextPath}/resources/view/addBookQuantity.jsp">Add Book Stock</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
