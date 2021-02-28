@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neelima.bookstore.dto.BookDto;
+import com.neelima.bookstore.dto.Select2Dto;
 import com.neelima.bookstore.model.Book;
 import com.neelima.bookstore.service.BookService;
 
@@ -46,7 +47,7 @@ public class BookController {
 		}
 		return ResponseEntity.ok(bookDto);
 	}
-	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Book> update(@PathVariable Long id, @RequestBody BookDto bookDto) {
 		Book book = bookService.update(id, bookDto);
@@ -54,6 +55,13 @@ public class BookController {
 			return ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.ok(book);
+	}
+
+	@PostMapping("/getBooksForSelect2")
+	public ResponseEntity<List<Select2Dto>> getBooksForSelect2(String search) {
+
+		return ResponseEntity.ok(bookService.findBooksContainingName(search));
+
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neelima.bookstore.dto.BookDto;
+import com.neelima.bookstore.dto.Select2Dto;
 import com.neelima.bookstore.model.Book;
 import com.neelima.bookstore.model.BookInventory;
 import com.neelima.bookstore.model.BookLog;
@@ -39,16 +40,16 @@ public class BookService {
 		return book.get();
 	}
 
-	
 	public BookDto findBookDtoById(Long id) {
 		Book book = findById(id);
-		if(book ==null) {
+		if (book == null) {
 			return null;
 		}
-		
-		return new BookDto(book.getId(), book.getName(), book.getPublisher(), book.getAuthor(),
-				book.getPrice(), book.getBookInventory().get(0).getQuantity());
+
+		return new BookDto(book.getId(), book.getName(), book.getPublisher(), book.getAuthor(), book.getPrice(),
+				book.getBookInventory().get(0).getQuantity());
 	}
+
 	public Book addBook(BookDto bookDto) {
 
 		Book book = new Book(bookDto);
@@ -80,7 +81,7 @@ public class BookService {
 
 		return bookDtos;
 	}
-	
+
 	public Book update(long id, BookDto bookDto) {
 		Book book = findById(id);
 		if (book == null) {
@@ -92,6 +93,19 @@ public class BookService {
 		book.setPublisher(bookDto.getPublisher());
 
 		return bookRepository.save(book);
+	}
+
+	public List<Select2Dto> findBooksContainingName(String search) {
+		
+		List<Select2Dto> select2Dtos = new LinkedList<Select2Dto>();
+		if(search==null || search.trim().equals("") ) {
+			return select2Dtos;
+		}
+		List<Book> books = bookRepository.findByNameContaining(search);
+		for (Book book : books) {
+			select2Dtos.add(new Select2Dto(book.getId(), book.getName()));
+		}
+		return select2Dtos;
 	}
 
 }
