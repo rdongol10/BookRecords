@@ -201,7 +201,7 @@
 		}).fail(function(){
 			jQuery(".loading").hide();
 			jQuery("#addBook").prop("disabled",false);
-			alertify.alert("<div style='color:red'>An Error occured while creating the user.</div>").setHeader("<b>Error</b>");
+			alertify.alert("<div style='color:red'>An Error occured while creating the Book.</div>").setHeader("<b>Error</b>");
 		
 		});
 	}
