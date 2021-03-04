@@ -1,6 +1,7 @@
 package com.neelima.bookstore.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,6 +35,10 @@ public class BookLogService {
 				action, quantity, new Date());
 
 		return bookLogRepository.save(bookLog);
+	}
+	
+	public List<BookLog> recordBookLogs(List<BookLog> bookLogs) {
+		return bookLogRepository.saveAll(bookLogs);
 	}
 
 }
