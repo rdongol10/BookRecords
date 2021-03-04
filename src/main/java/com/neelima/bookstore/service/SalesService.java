@@ -62,7 +62,9 @@ public class SalesService {
 				return null;
 			}
 		
-			salesDetails.add(new SalesDetail(salesDetailDto, book));
+			SalesDetail salesDetail = new SalesDetail(salesDetailDto, book);
+			salesDetail.setSales(sales);
+			salesDetails.add(salesDetail);
 			BookInventory bookInventory = bookInventoryService.findByBook(book);
 			if(bookInventory==null) {
 				return null;
