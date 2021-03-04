@@ -99,6 +99,7 @@
 	
 	jQuery(document).ready(function(){
 		initilizeSelect2ForBook()
+		initializeAlertifyTheme()
 		
 		jQuery("#addQuantity").on("click",function(event){
 			jQuery("#addQuantity").prop('disabled',true);
