@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.neelima.bookstore.dto.SalesDetailDto;
 
 @Entity
 public class SalesDetail {
@@ -25,7 +26,9 @@ public class SalesDetail {
 	@JoinColumn(name = "book_id", nullable = false, updatable = true, insertable = true)
 	private Book book;
 
-	private int quantity;
+	private double price;
+	
+	private long quantity;
 
 	private double total;
 
@@ -33,15 +36,22 @@ public class SalesDetail {
 
 	}
 
-	public SalesDetail(long id, Sales sales, Book book, int quantity, double total) {
+	public SalesDetail(long id, Sales sales, Book book, double price, int quantity, double total) {
 		super();
 		this.id = id;
 		this.sales = sales;
 		this.book = book;
+		this.price = price;
 		this.quantity = quantity;
 		this.total = total;
 	}
 
+	public SalesDetail(SalesDetailDto salesDetailDto,Book book) {
+		this.price=salesDetailDto.getPrice();
+		this.quantity=salesDetailDto.getQuantity();
+		this.total=salesDetailDto.getTotal();
+		this.book=book;
+	}
 	public long getId() {
 		return id;
 	}
@@ -66,12 +76,21 @@ public class SalesDetail {
 		this.book = book;
 	}
 
-	public int getQuantity() {
+	public long getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	
+	public void setQuantity(long quantity) {
 		this.quantity = quantity;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public double getTotal() {

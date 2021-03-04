@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.neelima.bookstore.dto.SalesDto;
+
 @Entity
 public class Sales {
 	@Id
@@ -39,6 +41,15 @@ public class Sales {
 
 	}
 
+	public Sales(SalesDto salesDto) {
+		this.soldDate= new Date();
+		this.grandTotal=salesDto.getGrandTotal();
+		this.tax=salesDto.getTax();
+		this.vat=salesDto.getVat();
+		this.netTotal=salesDto.getNetTotal();
+		
+				
+	}
 	public Sales(long id, User user, List<SalesDetail> salesDetail, Date soldDate, double grandTotal, double tax,
 			double vat, double netTotal) {
 		super();
