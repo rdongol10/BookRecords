@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
@@ -140,6 +141,15 @@ public class SalesService {
 		Date date = (Date) object;
 		return df.format(date);
 
+	}
+
+	public Sales findById(Long id) {
+		Optional<Sales> sales = salesRepository.findById(id);
+		if (!sales.isPresent()) {
+			return null;
+		}
+
+		return sales.get();
 	}
 
 }

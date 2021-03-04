@@ -3,6 +3,8 @@ package com.neelima.bookstore.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.neelima.bookstore.model.Sales;
+
 public class SalesDto {
 
 	private long id;

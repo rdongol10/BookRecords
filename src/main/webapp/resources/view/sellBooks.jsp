@@ -156,13 +156,11 @@
 	function sellBooks(){
 		if(sellingBooks.length<=0){
 			jQuery("#sellBooks").prop('disabled',false);
-			console.log("mildaina save garna")
 			return
 		}
 		
 		if(errorBooks.length>0){
 			jQuery("#sellBooks").prop('disabled',false);
-			console.log("mildaina save garna")
 
 			return
 		}
@@ -178,9 +176,8 @@
 			data : salesData
 			
 		}).done(function(data){
-			console.log(data)
-			jQuery(".loading").hide();
-			jQuery("#addUser").prop("disabled",false);
+			window.location.href="${contextPath}/resources/view/salesDetail.jsp?id="+data.id;
+
 
 		}).fail(function(){
 			jQuery(".loading").hide();
