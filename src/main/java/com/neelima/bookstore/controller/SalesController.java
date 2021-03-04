@@ -1,5 +1,7 @@
 package com.neelima.bookstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neelima.bookstore.dto.SalesDto;
+import com.neelima.bookstore.dto.SalesRecordsFilter;
 import com.neelima.bookstore.model.Sales;
 import com.neelima.bookstore.service.SalesService;
 
@@ -30,4 +33,10 @@ public class SalesController {
 		}
 	}
 
+	@PostMapping("/getSalesRecords")
+	public ResponseEntity<List<SalesDto>> getSalesRecords(@RequestBody SalesRecordsFilter salesRecordsFilter) {
+
+		return ResponseEntity.ok(salesService.getSalesRecords(salesRecordsFilter));
+
+	}
 }

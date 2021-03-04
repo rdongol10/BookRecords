@@ -5,6 +5,10 @@ import java.util.List;
 
 public class SalesDto {
 
+	private long id;
+
+	private String user;
+
 	private List<SalesDetailDto> salesDetailDto;
 
 	private Date soldDate;
@@ -21,6 +25,19 @@ public class SalesDto {
 
 	}
 
+	public SalesDto(long id, String user, List<SalesDetailDto> salesDetailDto, Date soldDate, double grandTotal,
+			double tax, double vat, double netTotal) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.salesDetailDto = salesDetailDto;
+		this.soldDate = soldDate;
+		this.grandTotal = grandTotal;
+		this.tax = tax;
+		this.vat = vat;
+		this.netTotal = netTotal;
+	}
+
 	public SalesDto(List<SalesDetailDto> salesDetailDto, Date soldDate, double grandTotal, double tax, double vat,
 			double netTotal) {
 		super();
@@ -30,6 +47,22 @@ public class SalesDto {
 		this.tax = tax;
 		this.vat = vat;
 		this.netTotal = netTotal;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public List<SalesDetailDto> getSalesDetailDto() {

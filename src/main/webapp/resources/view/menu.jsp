@@ -98,6 +98,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/sellBooks.jsp">Sell Books</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="${contextPath}/resources/view/salesReport.jsp">Sales Report </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
