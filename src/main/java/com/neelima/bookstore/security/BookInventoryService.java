@@ -1,5 +1,7 @@
 package com.neelima.bookstore.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +49,13 @@ public class BookInventoryService {
 		}
 		return bookInventoryRepository.save(bookInventory);
 
+	}
+
+	public BookInventory findByBook(Book book) {
+		return bookInventoryRepository.findBookInventoryByBook(book);
+	}
+
+	public List<BookInventory> saveBookInvetories(List<BookInventory> bookInventories) {
+		return bookInventoryRepository.saveAll(bookInventories);
 	}
 }
