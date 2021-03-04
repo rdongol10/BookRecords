@@ -166,11 +166,54 @@
 
 			return
 		}
-		jQuery("#sellBooks").prop('disabled',false);
-		console.log("lala save garnus")
+
+		var salesData = getSalesData()
+		jQuery(".loading").show();
+		
+		jQuery.ajax({
+			
+			method : "POST",
+			url : "${contextPath}/sales",
+			contentType: 'application/json; charset=UTF-8',		
+			data : salesData
+			
+		}).done(function(data){
+			console.log(data)
+			jQuery(".loading").hide();
+			jQuery("#addUser").prop("disabled",false);
+
+		}).fail(function(){
+			jQuery(".loading").hide();
+			jQuery("#addUser").prop("disabled",false);
+			alertify.alert("<div style='color:red'>An Error occured while creating the Rentee.</div>").setHeader("<b>Error</b>");
+		});
 		
 	}
 	
+	function getSalesData(){
+		var salesData= new Object();
+		salesData.grandTotal = jQuery("#totalAmount").html()
+		salesData.tax = jQuery("#tax").html()
+		salesData.vat = jQuery("#vat").html()
+		salesData.netTotal = jQuery("#netTotal").html()
+		salesData.salesDetailDto=getSalesDetailsData()
+		return JSON.stringify(salesData);
+	}
+	
+	function getSalesDetailsData(){
+		var	salesDetails = []
+		jQuery(".bookRow").each(function(){
+			
+			var salesDetail = new Object();
+			salesDetail.bookId = $(this).find(".bookId").val();
+			salesDetail.price = $(this).find(".bookPrice").html();
+			salesDetail.quantity = $(this).find(".bookQuantity").val();
+			salesDetail.total =  $(this).find(".bookAmount").html();
+			salesDetails.push(salesDetail)
+		})
+		
+		return salesDetails
+	}
 	function validQuantity(quantity , instock){
 		if(isNaN(quantity)){
 			return "Quantity cannot be characters"
@@ -195,7 +238,7 @@
 		var validity=validQuantity(quantity,parseInt($(row).find(".bookStock").html()))
 		var bookId = $(row).find(".bookId").val()
 		if(validity == "true"){
-			errorBooks = errorBooks.filter(item =>  item!==bookId)
+			errorBooks = errorBooks.filter(item => item!==bookId)
 			$(row).find(".errorFeedback").html("")
 			amount = quantity * parseInt($(row).find(".bookPrice").html())
 			
