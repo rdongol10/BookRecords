@@ -91,6 +91,17 @@
                                 </div>
                             </li>
                             
+                             <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#salesMenu" aria-controls="salesMenu">Sales </a>
+                                <div id="salesMenu" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="${contextPath}/resources/view/sellBooks.jsp">Sell Books</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
                         </ul>
                     </div>
                 </nav>
