@@ -90,6 +90,7 @@
 													<label for="typeOfUser" class="col-form-label">Type of User</label>
 													<select class="form-control" id="typeOfUser" name="typeOfUser">
 														<option value="Admin" >Admin</option>
+														<option value="User" >User</option>
 													</select>
 													<div class="errorFeedback" id="typeOfUser-errorFeedback">
 														

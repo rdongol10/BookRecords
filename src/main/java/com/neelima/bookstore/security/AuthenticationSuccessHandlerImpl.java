@@ -28,6 +28,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 		User loggedInUser = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
 		session.setAttribute("userId", userName);
 		session.setAttribute("userName", loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
+		session.setAttribute("userRole", loggedInUser.getTypeOfUser());
 		response.sendRedirect(request.getContextPath() + "/");
 
 	}

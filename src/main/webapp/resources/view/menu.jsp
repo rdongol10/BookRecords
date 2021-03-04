@@ -20,6 +20,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
         	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+			
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand" href="${contextPath}/">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,36 +58,43 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
+		                      
                             <li class="nav-divider">
                                 Menu
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#userMenu" aria-controls="userMenu">Users </a>
-                                <div id="userMenu" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="${contextPath}/resources/view/listUsers.jsp">List Users</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="${contextPath}/resources/view/addUser.jsp">Add Users</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                            <%if(session.getAttribute("userRole").equals("Admin")){%>
                             
-                             <li class="nav-item ">
+	                            <li class="nav-item ">
+	                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#userMenu" aria-controls="userMenu">Users </a>
+	                                <div id="userMenu" class="collapse submenu" style="">
+	                                    <ul class="nav flex-column">
+	                                        <li class="nav-item">
+	                                            <a class="nav-link" href="${contextPath}/resources/view/listUsers.jsp">List Users</a>
+	                                        </li>
+	                                        <li class="nav-item">
+	                                            <a class="nav-link" href="${contextPath}/resources/view/addUser.jsp">Add Users</a>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	                            </li>
+                            
+                            <%} %>
+                            
+                            <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#booksMenu" aria-controls="booksMenu">Books </a>
                                 <div id="booksMenu" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/listBooks.jsp">List Books</a>
                                         </li>
+                                        <%if(session.getAttribute("userRole").equals("Admin")){%>
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/addBook.jsp">Add Book</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="${contextPath}/resources/view/addBookQuantity.jsp">Add Book Stock</a>
                                         </li>
+                                        <%} %>
                                     </ul>
                                 </div>
                             </li>

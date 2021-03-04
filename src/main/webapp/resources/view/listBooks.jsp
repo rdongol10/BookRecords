@@ -29,11 +29,12 @@
 										Book Lists</h2>
 
 									<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
-
+										<%if(session.getAttribute("userRole").equals("Admin")){%>
 										<a href="${contextPath}/resources/view/addBook.jsp"
 											class="btn btn-success topAddButton"> <i
 											class="fas fa-plus"></i> &nbsp; Add Book
 										</a>
+										<%} %>
 
 									</div>
 								</div>
@@ -70,6 +71,7 @@
 <script src="<c:url value="/resources/js/alertify.js" />"></script>
 
 <script>
+	var userRole = '${userRole}'
 	var table;
 	
 	function initializeAlertifyTheme(){
@@ -102,11 +104,19 @@
 			url : "${contextPath}/book",
 			method : "GET",
 		}).done(function(data){
-			jQuery(".loading").hide();		
-			data.map(d => {
-				var action ="<i class='actionButton editBook fas fa-edit fa-lg' bookId='"+d.id+"' title='edit' style = 'color:#3559BA'> </i>"
-				d.action = action
-			})
+			jQuery(".loading").hide();	
+			if(userRole !="Admin"){
+				data.map(d => {
+					var action =""
+					d.action = action
+				})
+			}else{
+				data.map(d => {
+					var action ="<i class='actionButton editBook fas fa-edit fa-lg' bookId='"+d.id+"' title='edit' style = 'color:#3559BA'> </i>"
+					d.action = action
+				})
+			}
+			
 			loadDatatable(data)
 		
 		}).fail(function(){
