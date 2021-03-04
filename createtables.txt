@@ -48,7 +48,7 @@ CREATE TABLE `book_log` (
 
 
 CREATE TABLE `sales` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `sold_by` int(11) NOT NULL,
   `sold_Date` date NOT NULL,
   `grand_total` double(13,2) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `sales` (
 
 
 CREATE TABLE `sales_detail` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `sales_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
   `price` double(13,2) NOT NULL,
