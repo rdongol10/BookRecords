@@ -41,7 +41,7 @@ public class UserController {
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		Optional<User> user = userService.findById(id);
 		if (!user.isPresent()) {
-			ResponseEntity.badRequest().build();
+			return ResponseEntity.badRequest().build();
 		}
 
 		return ResponseEntity.ok(user.get());
@@ -67,7 +67,7 @@ public class UserController {
 	@PutMapping("/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, User user) {
 		if (!userService.findById(id).isPresent()) {
-			ResponseEntity.badRequest().build();
+			return ResponseEntity.badRequest().build();
 		}
 
 		User currentUser = userService.findById(id).get();
@@ -86,7 +86,7 @@ public class UserController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<User> delete(@PathVariable Long id) {
 		if (!userService.findById(id).isPresent()) {
-			ResponseEntity.badRequest().build();
+			return ResponseEntity.badRequest().build();
 		}
 
 		userService.deleteById(id);
