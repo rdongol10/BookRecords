@@ -1,0 +1,1 @@
+insert into `user` (`login_name`, `password`, `first_name`, `last_name`, `middle_name`, `phone_number`, `email_address`, `sex`, `type_of_user`) values('neeli','$2a$10$IgFsFp9xCc8NleSNEP/8J.r3yZeZ6GIl3AXJA.7ETMgw9r4UYJk56','Neelima','Shahi',NULL,'1111111111','neli@gmail.com','Female','Adminuser');
